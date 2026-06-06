@@ -5,40 +5,42 @@ function psc_enqueue_assets() {
     $theme_dir = get_template_directory();
     $theme_uri = get_template_directory_uri();
     $manifest_path = $theme_dir . '/dist/.vite/manifest.json';
-    $entry_point = 'src/main.js';
+    $js_entry  = 'src/main.js';
+    $css_entry = 'src/assets/css/app.css';
 
     if (file_exists($manifest_path)) {
-        // --- РЕЖИМ ПРОДАКШЕНА (после npm run build) ---
+        // --- РЕЖИМ ПРОДАКШЕНА ---
         $manifest = json_decode(file_get_contents($manifest_path), true);
 
-        if (isset($manifest[$entry_point])) {
-            // Подключаем JS
+        // JS
+        if (isset($manifest[$js_entry])) {
             wp_enqueue_script(
                 'psc-script',
-                $theme_uri . '/dist/' . $manifest[$entry_point]['file'],
+                $theme_uri . '/dist/' . $manifest[$js_entry]['file'],
                 array(),
                 wp_get_theme()->get('Version'),
                 true
             );
+        }
 
-            // Подключаем CSS (если он сгенерировался для этого entry)
-            if (isset($manifest[$entry_point]['css'])) {
-                wp_enqueue_style(
-                    'psc-style',
-                    $theme_uri . '/dist/' . $manifest[$entry_point]['css'][0],
-                    array(),
-                    wp_get_theme()->get('Version')
-                );
-            }
+        // CSS (отдельный entry)
+        if (isset($manifest[$css_entry])) {
+            wp_enqueue_style(
+                'psc-style',
+                $theme_uri . '/dist/' . $manifest[$css_entry]['file'],
+                array(),
+                wp_get_theme()->get('Version')
+            );
         }
     } else {
-        // --- РЕЖИМ РАЗРАБОТКИ (запущен npm run dev) ---
+        // --- РЕЖИМ РАЗРАБОТКИ ---
         $vite_dev_url = 'http://psychological-support-center.local:5173';
 
-        wp_enqueue_script('psc-script-dev', $vite_dev_url . '/src/main.js', array(), null, true);
-        add_action('wp_head', function() use ($vite_dev_url, $entry_point) {
-            echo '<link rel="stylesheet" href="' . $vite_dev_url . '/' . str_replace('.js', '.css', $entry_point) . '">' . "\n";
-        }, 1); // Приоритет 1 = максимально рано в <head>
+        wp_enqueue_script('psc-script-dev', $vite_dev_url . '/' . $js_entry, array(), null, true);
+
+        add_action('wp_head', function() use ($vite_dev_url, $css_entry) {
+            echo '<link rel="stylesheet" href="' . $vite_dev_url . '/' . $css_entry . '">' . "\n";
+        }, 1);
     }
 }
 add_action('wp_enqueue_scripts', 'psc_enqueue_assets');
@@ -59,4 +61,53 @@ function my_custom_theme_menus() {
     register_nav_menus( array(
         'header-menu' => __( 'Главное меню в шапке', 'my-theme' ),
     ) );
+}
+
+function mytheme_setup() {
+    // Добавляем поддержку кастомного логотипа
+    add_theme_support( 'custom-logo', array(
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => array( 'site-title', 'site-description' ),
+    ) );
+}
+add_action( 'after_setup_theme', 'mytheme_setup' );
+
+// add_filter( 'get_custom_logo', 'psc_clean_logo_attributes', 20 );
+//
+// function psc_clean_logo_attributes( $html ) {
+//     // Регулярное выражение удаляет атрибуты width, height и style из тега img
+//     $html = preg_replace( '/\s+(width|height|style|srcset|sizes)="[^"]*"/', '', $html );
+//     return $html;
+// }
+
+function psc_get_clean_logo() {
+    $custom_logo_id = get_theme_mod( 'custom_logo' );
+
+    // Если лого не задано, выводим название сайта текстом
+    if ( ! $custom_logo_id ) {
+        return '<span class="site-title">' . get_bloginfo( 'name' ) . '</span>';
+    }
+
+    // Получаем URL оригинального (полноразмерного) изображения
+    $image = wp_get_attachment_image_src( $custom_logo_id, 'full' );
+
+    if ( $image ) {
+        $image_url = $image[0];
+        // Получаем ALT текст, если он есть, иначе используем название сайта
+        $alt_text = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+        if ( ! $alt_text ) {
+            $alt_text = get_bloginfo( 'name' );
+        }
+
+        // Возвращаем ЧИСТЫЙ HTML без srcset, sizes, height и style
+        return sprintf(
+            '<a href="%s" class="custom-logo-link" rel="home"><img src="%s" alt="%s" class="custom-logo" width="200"></a>',
+            esc_url( home_url( '/' ) ),
+            esc_url( $image_url ),
+            esc_attr( $alt_text )
+        );
+    }
+
+    return get_bloginfo( 'name' );
 }

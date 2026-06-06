@@ -1,13 +1,9 @@
 <?php
-/**
- * Шаблон страницы 404 (Страница не найдена)
- */
-
-get_header();
+    get_header();
 ?>
 
 <main>
-    <div class="text-center" style="padding:50px;">
+    <div class="text-center p-12 flex flex-col justify-center">
 
         <!-- Иконка в жестком контейнере -->
         <div class="mb-6 flex items-center justify-center w-50 h-50 mx-auto bg-amber-100 rounded-full flex-shrink-0">
@@ -24,7 +20,7 @@ get_header();
 
         <!-- Кнопка с инлайн-стилями для SVG на всякий случай -->
         <a href="<?php echo esc_url(home_url('/')); ?>"
-           class="flex items-center gap-6 justify-center px-6 py-3 text-sm font-semibold bg-gray-900 rounded-lg shadow-md hover:bg-gray-800 transition-all duration-200 no-underline">
+           class="flex items-center gap-6 px-6 py-3 justify-center text-sm font-semibold rounded-lg shadow-md bg-gray-100 hover:bg-gray-200 transition-all duration-200 no-underline">
 
             <svg class="flex-shrink-0 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; min-width: 16px; min-height: 16px;">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -37,5 +33,5 @@ get_header();
 </main>
 
 <?php
-get_footer();
+    get_footer();
 ?>

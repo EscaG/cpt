@@ -1,4 +1,4 @@
-    <footer class="bg-gray-200 p-4 mt-8 text-center">
+    <footer class="bg-[#F1FAF7] p-4 mt-8 text-center">
         <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
     </footer>
 

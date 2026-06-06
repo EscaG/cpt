@@ -6,6 +6,7 @@
 @import "../css/fonts/RobotoSerif.css";
 @import "../css/fonts/Inter.css";
 
+@plugin "fluid-tailwindcss";
 
 
 @theme {
@@ -41,6 +42,17 @@
     }
 }
 
+/* Нацеливаемся на стандартные классы навигации WordPress */
+.animated-nav {
+    @apply flex ; /* Плавное расстояние между пунктами меню */
+
+    & .menu-item a {
+        /* Применяем плавный шрифт и плавные вертикальные/горизонтальные отступы */
+        @apply fl-text-[16px/24px] fl-px-0/2 fl-py-1/3 fl-gap-4/8 block font-medium;
+        white-space: nowrap;
+    }
+}
+
 .custom-logo-link img,
 .custom-logo {
     width: auto;       /* Сбрасываем инлайн-ширину */
@@ -48,4 +60,5 @@
     display: block;
     object-fit: contain;
 }
+
 

@@ -26,7 +26,7 @@
                         'theme_location'  => 'header-menu',      // Идентификатор, который мы задали в functions.php
                         'container'       => 'nav',              // Оборачиваем меню в тег <nav>
                         'container_class' => 'animated-nav',  // CSS-класс для тега <nav> (для стилизации)
-                        'menu_class'      => 'flex items-center gap-4 text-2xl',       // CSS-класс для списка <ul>
+                        'menu_class'      => 'flex items-center fl-gap-2/4 text-2xl',       // CSS-класс для списка <ul>
                         'fallback_cb'     => false,              // Не выводить стандартный список страниц, если меню пустое
                         'depth'           => 0,                  // 0 = неограниченная вложенность (подменю), 1 = только верхний уровень
                     ) );

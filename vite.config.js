@@ -10,13 +10,12 @@ export default defineConfig({
 		tailwindcss(),
 	],
 	server: {
-		host: 'psychological-support-center.local', // Замените на реальный домен вашего сайта в LocalWP
-		origin: 'http://psychological-support-center.local',
+		host: true, // Замените на реальный домен вашего сайта в LocalWP
 		port: 5173,
 		cors: true, // Разрешаем WordPress загружать скрипты с localhost:5173
 		hmr: {
 			protocol: 'ws',
-			host: 'localhost'
+			host: '192.168.0.125'
 		}
 	},
 	build: {

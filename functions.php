@@ -34,7 +34,7 @@ function psc_enqueue_assets() {
         }
     } else {
         // --- РЕЖИМ РАЗРАБОТКИ ---
-        $vite_dev_url = 'http://psychological-support-center.local:5173';
+        $vite_dev_url = 'http://192.168.0.125:5173';
 
         wp_enqueue_script('psc-script-dev', $vite_dev_url . '/' . $js_entry, array(), null, true);
 

@@ -24,7 +24,7 @@ export default defineConfig({
 		emptyOutDir: true,
 		rollupOptions: {
 			input: {
-				main: resolve(__dirname, 'src/main.js'),
+				main: resolve(__dirname, 'src/assets/js/main.js'),
 				style: resolve(__dirname, 'src/assets/css/app.css'),
 			},
 			output: {

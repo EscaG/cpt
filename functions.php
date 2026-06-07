@@ -5,7 +5,7 @@ function psc_enqueue_assets() {
     $theme_dir = get_template_directory();
     $theme_uri = get_template_directory_uri();
     $manifest_path = $theme_dir . '/dist/.vite/manifest.json';
-    $js_entry  = 'src/main.js';
+    $js_entry  = 'src/assets/js/main.js';
     $css_entry = 'src/assets/css/app.css';
 
     if (file_exists($manifest_path)) {

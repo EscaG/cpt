@@ -44,17 +44,17 @@
 					</div>
 					<ul class="hidden min-[480px]:flex md:gap-2 gap-4 max-[768px]:mr-14">
 						<li style="max-width: 50px;">
-							<a href="/">
+							<a target="_blank" href="https://www.instagram.com/center_forpsychology?igsh=aWh0Z3Jtcmd1amp3">
 								<?php echo get_inline_svg('instagram.svg', 'fl-w-[32px/50px]'); ?>
 							</a>
 						</li>
 						<li style="max-width: 50px;">
-							<a href="/">
+							<a target="_blank" href="https://t.me/center_for_psychology">
 								<?php echo get_inline_svg('social.svg', 'fl-w-[32px/50px]'); ?>
 							</a>
 						</li>
 						<li style="max-width: 50px;">
-							<a href="/">
+							<a target="_blank" href="https://www.youtube.com/@%D0%A6%D0%B5%D0%BD%D1%82%D1%80%D0%9F%D1%81%D0%B8%D1%85%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%87%D0%BD%D0%B8%D1%85%D0%A2%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D0%B9">
 								<?php echo get_inline_svg('youtube.svg', 'fl-w-[32px/50px]'); ?>
 							</a>
 						</li>
@@ -189,17 +189,17 @@
 				?>
 				<ul class="flex gap-4 justify-center mt-8">
 					<li>
-						<a href="/">
+						<a target="_blank" href="https://www.instagram.com/center_forpsychology?igsh=aWh0Z3Jtcmd1amp3">
 							<?php echo get_inline_svg('instagram.svg', 'w-[32px]'); ?>
 						</a>
 					</li>
 					<li>
-						<a href="/">
+						<a target="_blank" href="https://t.me/center_for_psychology">
 							<?php echo get_inline_svg('social.svg', 'w-[32px]'); ?>
 						</a>
 					</li>
 					<li>
-						<a href="/">
+						<a target="_blank" href="https://www.youtube.com/@%D0%A6%D0%B5%D0%BD%D1%82%D1%80%D0%9F%D1%81%D0%B8%D1%85%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D1%87%D0%BD%D0%B8%D1%85%D0%A2%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D0%B9">
 							<?php echo get_inline_svg('youtube.svg', 'w-[32px]'); ?>
 						</a>
 					</li>

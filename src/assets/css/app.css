@@ -23,5 +23,4 @@
     --font-product: "IBMPlexSans", ui-sans-serif, system-ui, sans-serif;
 }
 
-@source "../../../**/*.php";
-@source "../../../src/**/*.{js,ts,jsx,tsx,vue}";
+@source "../../../**/*.{js,php}";

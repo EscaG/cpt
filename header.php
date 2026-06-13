@@ -35,25 +35,32 @@
                             'theme_location'  => 'header-menu',
                             'container'       => 'nav',
                             'container_class' => 'animated-nav',
-                            'menu_class'      => 'flex fl-gap-2/4',
+                            'menu_class'      => 'flex fl-gap-1/4',
                             'fallback_cb'     => false,
                             'depth'           => 0,
                         ));
                         ?>
                     </div>
-                    <div class="flex gap-2">
-                        <div style="max-width: 50px;">
-                            <?php echo get_inline_svg('instagram.svg', 'fl-w-[25px/50px] cursor-pointer'); ?>
-                        </div>
-                        <div style="max-width: 50px;">
-                            <?php echo get_inline_svg('social.svg', 'fl-w-[25px/50px] cursor-pointer'); ?>
-                        </div>
-                        <div style="max-width: 50px;">
-                            <?php echo get_inline_svg('youtube.svg', 'fl-w-[25px/50px] cursor-pointer'); ?>
-                        </div>
-                    </div>
+                	</div>
+                    <ul class="hidden min-[480px]:flex md:gap-2 gap-4 max-[768px]:mr-12">
+                        <li style="max-width: 50px;">
+                            <a href="/">
+                                <?php echo get_inline_svg('instagram.svg', 'fl-w-[32px/50px]'); ?>
+                            </a>
+                        </li>
+                        <li style="max-width: 50px;">
+                            <a href="/">
+                                <?php echo get_inline_svg('social.svg', 'fl-w-[32px/50px]'); ?>
+                            </a>
+                        </li>
+                        <li style="max-width: 50px;">
+                            <a href="/">
+                                <?php echo get_inline_svg('youtube.svg', 'fl-w-[32px/50px]'); ?>
+                            </a>
+                        </li>
+                    </ul>
 
-				</div>
+
 
 				<!-- БУРГЕР -->
 				<div class="flex items-center md:hidden absolute right-0 top-1/2 -translate-y-1/2">
@@ -112,7 +119,9 @@
 			x-transition:leave-start="translate-x-0 opacity-100"
 			x-transition:leave-end="translate-x-full opacity-90"
 			class="absolute right-0 top-0 h-screen w-full max-w-sm bg-white shadow-2xl flex flex-col"
-			style="will-change: transform, opacity; -webkit-backface-visibility: hidden; -webkit-perspective: 1000;">
+			style="will-change: transform, opacity; -webkit-backface-visibility: hidden; -webkit-perspective: 1000;"
+		>
+
 			<!-- Шапка меню -->
 			<div class="flex justify-between p-2 border-b border-gray-100 bg-white shrink-0">
 				<!-- ЛОГО -->
@@ -133,7 +142,7 @@
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
-			</div>
+            </div>
 
 			<!-- Пункты меню -->
 			<div class="flex-1 overflow-y-auto px-6 py-4">
@@ -145,6 +154,23 @@
 					'fallback_cb'     => false,
 				));
 				?>
+                <ul class="flex gap-4 justify-center mt-8">
+                    <li>
+                        <a href="/">
+                            <?php echo get_inline_svg('instagram.svg', 'w-[32px]'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <?php echo get_inline_svg('social.svg', 'w-[32px]'); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <?php echo get_inline_svg('youtube.svg', 'w-[32px]'); ?>
+                        </a>
+                    </li>
+                </ul>
 			</div>
 		</div>
 	</div>

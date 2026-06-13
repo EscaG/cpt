@@ -19,26 +19,32 @@
 				<!-- ЛОГО -->
 				<div style="max-width: 200px; min-width: 50px;">
 					<?php
-					if (has_custom_logo()) {
-						echo psc_get_clean_logo();
-					} else {
-						echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
-					}
+                        if (has_custom_logo()) {
+                            echo psc_get_clean_logo();
+                        } else {
+                            echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
+                        }
 					?>
 				</div>
 
 				<!-- ДЕСКТОПНОЕ МЕНЮ -->
-				<div class="hidden md:flex md:items-center">
-					<?php
-					wp_nav_menu(array(
-						'theme_location'  => 'header-menu',
-						'container'       => 'nav',
-						'container_class' => 'animated-nav',
-						'menu_class'      => 'flex fl-gap-4/6',
-						'fallback_cb'     => false,
-						'depth'           => 0,
-					));
-					?>
+				<div class="hidden md:flex md:items-center fl-gap-2/12">
+                    <div>
+                        <?php
+                        wp_nav_menu(array(
+                            'theme_location'  => 'header-menu',
+                            'container'       => 'nav',
+                            'container_class' => 'animated-nav',
+                            'menu_class'      => 'flex fl-gap-2/4',
+                            'fallback_cb'     => false,
+                            'depth'           => 0,
+                        ));
+                        ?>
+                    </div>
+                    <div>
+
+                    </div>
+
 				</div>
 
 				<!-- БУРГЕР -->
@@ -98,20 +104,19 @@
 			x-transition:leave-start="translate-x-0 opacity-100"
 			x-transition:leave-end="translate-x-full opacity-90"
 			class="absolute right-0 top-0 h-screen w-full max-w-sm bg-white shadow-2xl flex flex-col"
-			style="will-change: transform, opacity; -webkit-backface-visibility: hidden; -webkit-perspective: 1000;"
-		>
+			style="will-change: transform, opacity; -webkit-backface-visibility: hidden; -webkit-perspective: 1000;">
 			<!-- Шапка меню -->
 			<div class="flex justify-between p-2 border-b border-gray-100 bg-white shrink-0">
-                <!-- ЛОГО -->
-                <div style="max-width: 170px; min-width: 50px;">
-                    <?php
-                        if (has_custom_logo()) {
-                            echo psc_get_clean_logo();
-                        } else {
-                            echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
-                        }
-                    ?>
-                </div>
+				<!-- ЛОГО -->
+				<div style="max-width: 170px; min-width: 50px;">
+					<?php
+					if (has_custom_logo()) {
+						echo psc_get_clean_logo();
+					} else {
+						echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
+					}
+					?>
+				</div>
 				<button
 					@click="closeMenu()"
 					class="p-2 rounded-full transition-colors"
@@ -126,10 +131,10 @@
 			<div class="flex-1 overflow-y-auto px-6 py-4">
 				<?php
 				wp_nav_menu(array(
-					'theme_location' => 'header-menu',
-					'container'      => 'nav',
-					'container_class'=> 'mobile-menu',
-					'fallback_cb'    => false,
+					'theme_location'  => 'header-menu',
+					'container'       => 'nav',
+					'container_class' => 'mobile-menu',
+					'fallback_cb'     => false,
 				));
 				?>
 			</div>

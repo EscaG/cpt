@@ -11,7 +11,7 @@
 	<?php body_class(); ?>
 	x-data="headerMenu">
 
-	<header class="w-full bg-white/90 border-b border-gray-200 sticky top-0 z-50 py-2">
+	<header class="w-full bg-white/90 border-b border-[#DDEEE8] sticky top-0 z-50 py-2">
 		<div class="container">
 			<div class="flex gap-2 h-16 md:h-20 items-center justify-between relative">
 
@@ -29,18 +29,16 @@
 				<!-- ДЕСКТОПНОЕ МЕНЮ -->
 				<div class="flex md:gap-2 lg:gap-4">
 					<div class="hidden md:flex md:items-center">
-						<div>
-							<?php
-							wp_nav_menu(array(
-								'theme_location'  => 'header-menu',
-								'container'       => 'nav',
-								'container_class' => 'animated-nav',
-								'menu_class'      => 'flex fl-gap-1/4',
-								'fallback_cb'     => false,
-								'depth'           => 0,
-							));
-							?>
-						</div>
+						<?php
+						wp_nav_menu(array(
+							'theme_location'  => 'header-menu',
+							'container'       => 'nav',
+							'container_class' => 'animated-nav',
+							'menu_class'      => 'flex fl-gap-1/4',
+							'fallback_cb'     => false,
+							'depth'           => 0,
+						));
+						?>
 					</div>
 					<ul class="hidden min-[480px]:flex md:gap-2 gap-4 max-[768px]:mr-14">
 						<li style="max-width: 50px;">
@@ -66,7 +64,7 @@
 				<!-- БУРГЕР -->
 				<div class="flex items-center md:hidden absolute right-0 top-1/2 -translate-y-1/2">
 					<button
-						@click="mobileMenuOpen = !mobileMenuOpen"
+						@click="mobileMenuOpen ? closeMenu() : openMenu()"
 						type="button"
 						class="inline-flex items-center justify-center p-2  focus:outline-none"
 						aria-controls="mobile-menu"

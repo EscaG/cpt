@@ -1,0 +1,32 @@
+.animated-nav {
+    & .menu-item a {
+        @apply fl-px-0/2 fl-py-1/3 fl-gap-4/8 transition-[background-size];
+        @apply bg-gradient-to-r from-[#3E8E7E] to-[#3E8E7E] bg-[length:0%_2px] bg-no-repeat bg-bottom duration-300;
+        @apply fl-text-[12px/24px] font-body;
+        white-space: nowrap;
+        /* Эффект при наведении */
+        &:hover {
+            @apply bg-[length:100%_2px];
+        }
+    }
+
+    /* Подчеркивание для активного пункта меню (текущая страница) */
+    & .current-menu-item a {
+        @apply bg-[length:100%_2px];
+    }
+}
+
+.mobile-menu {
+    & .menu-item a {
+        @apply text-[20px] font-body text-center block mb-4 p-1;
+    }
+}
+
+.custom-logo-link img,
+.custom-logo {
+    width: auto;       /* Сбрасываем инлайн-ширину */
+    min-width: 100px;  /* Задайте здесь нужную вам максимальную ширину */
+    display: block;
+    object-fit: contain;
+}
+[x-cloak] { display: none !important; }

@@ -1,5 +1,5 @@
 <?php
-
+// Перезапуск live-reload при изменении php файлов
 function get_vite_asset_url($entry) {
     $manifest_path = get_template_directory() . '/dist/.vite/manifest.json';
 

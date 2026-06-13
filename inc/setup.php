@@ -105,3 +105,36 @@ function psc_get_clean_logo() {
     return get_bloginfo( 'name' );
 }
 
+if (!function_exists('get_inline_svg')) {
+    function get_inline_svg($filename, $additional_classes = '') {
+        $theme_dir = get_template_directory();
+
+        // 1. Сначала ищем в dist (для продакшена после npm run build)
+        $path_dist = $theme_dir . '/dist/assets/img/icons/' . $filename;
+
+        // 2. Если нет, ищем в public (для локальной разработки в LocalWP)
+        $path_public = $theme_dir . '/public/assets/img/icons/' . $filename;
+
+        $path = file_exists($path_dist) ? $path_dist : $path_public;
+
+        if (file_exists($path)) {
+            $svg = file_get_contents($path);
+
+            // Удаляем жесткие width/height для управления через Tailwind (w-6 h-6)
+            $svg = preg_replace('/(<svg[^>]*?)\s+width="[^"]*"\s+height="[^"]*"/', '$1', $svg);
+
+            // Добавляем базовые классы. fill-current позволяет менять цвет через text-*
+            $svg = preg_replace(
+                '/<svg/',
+                '<svg class="' . esc_attr($additional_classes) . '"',
+                $svg,
+                1
+            );
+
+            return $svg;
+        }
+
+        // Отладка
+        return '<!-- SVG not found: ' . esc_html($filename) . ' -->';
+    }
+}

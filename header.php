@@ -41,8 +41,16 @@
                         ));
                         ?>
                     </div>
-                    <div>
-
+                    <div class="flex gap-2">
+                        <div style="max-width: 50px;">
+                            <?php echo get_inline_svg('instagram.svg', 'fl-w-[25px/50px] cursor-pointer'); ?>
+                        </div>
+                        <div style="max-width: 50px;">
+                            <?php echo get_inline_svg('social.svg', 'fl-w-[25px/50px] cursor-pointer'); ?>
+                        </div>
+                        <div style="max-width: 50px;">
+                            <?php echo get_inline_svg('youtube.svg', 'fl-w-[25px/50px] cursor-pointer'); ?>
+                        </div>
                     </div>
 
 				</div>

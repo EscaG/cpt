@@ -9,8 +9,7 @@
 
 <body
 	<?php body_class(); ?>
-	x-data="headerMenu"
->
+	x-data="headerMenu">
 
 	<header class="w-full bg-white/90 border-b border-gray-200 sticky top-0 z-50 py-2">
 		<div class="container">
@@ -19,64 +18,81 @@
 				<!-- ЛОГО -->
 				<div style="max-width: 200px; min-width: 50px;">
 					<?php
-                        if (has_custom_logo()) {
-                            echo psc_get_clean_logo();
-                        } else {
-                            echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
-                        }
+					if (has_custom_logo()) {
+						echo psc_get_clean_logo();
+					} else {
+						echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
+					}
 					?>
 				</div>
 
 				<!-- ДЕСКТОПНОЕ МЕНЮ -->
-				<div class="hidden md:flex md:items-center fl-gap-2/12">
-                    <div>
-                        <?php
-                        wp_nav_menu(array(
-                            'theme_location'  => 'header-menu',
-                            'container'       => 'nav',
-                            'container_class' => 'animated-nav',
-                            'menu_class'      => 'flex fl-gap-1/4',
-                            'fallback_cb'     => false,
-                            'depth'           => 0,
-                        ));
-                        ?>
-                    </div>
-                	</div>
-                    <ul class="hidden min-[480px]:flex md:gap-2 gap-4 max-[768px]:mr-12">
-                        <li style="max-width: 50px;">
-                            <a href="/">
-                                <?php echo get_inline_svg('instagram.svg', 'fl-w-[32px/50px]'); ?>
-                            </a>
-                        </li>
-                        <li style="max-width: 50px;">
-                            <a href="/">
-                                <?php echo get_inline_svg('social.svg', 'fl-w-[32px/50px]'); ?>
-                            </a>
-                        </li>
-                        <li style="max-width: 50px;">
-                            <a href="/">
-                                <?php echo get_inline_svg('youtube.svg', 'fl-w-[32px/50px]'); ?>
-                            </a>
-                        </li>
-                    </ul>
+				<div class="flex md:gap-2 lg:gap-4">
+					<div class="hidden md:flex md:items-center">
+						<div>
+							<?php
+							wp_nav_menu(array(
+								'theme_location'  => 'header-menu',
+								'container'       => 'nav',
+								'container_class' => 'animated-nav',
+								'menu_class'      => 'flex fl-gap-1/4',
+								'fallback_cb'     => false,
+								'depth'           => 0,
+							));
+							?>
+						</div>
+					</div>
+					<ul class="hidden min-[480px]:flex md:gap-2 gap-4 max-[768px]:mr-14">
+						<li style="max-width: 50px;">
+							<a href="/">
+								<?php echo get_inline_svg('instagram.svg', 'fl-w-[32px/50px]'); ?>
+							</a>
+						</li>
+						<li style="max-width: 50px;">
+							<a href="/">
+								<?php echo get_inline_svg('social.svg', 'fl-w-[32px/50px]'); ?>
+							</a>
+						</li>
+						<li style="max-width: 50px;">
+							<a href="/">
+								<?php echo get_inline_svg('youtube.svg', 'fl-w-[32px/50px]'); ?>
+							</a>
+						</li>
+					</ul>
 
+				</div>
 
 
 				<!-- БУРГЕР -->
 				<div class="flex items-center md:hidden absolute right-0 top-1/2 -translate-y-1/2">
 					<button
-						@click="openMenu()"
+						@click="mobileMenuOpen = !mobileMenuOpen"
 						type="button"
-						class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors"
+						class="inline-flex items-center justify-center p-2  focus:outline-none"
 						aria-controls="mobile-menu"
 						:aria-expanded="mobileMenuOpen">
 						<span class="sr-only">Открыть главное меню</span>
-						<svg width="24" height="24" x-show="!mobileMenuOpen" x-cloak class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-						</svg>
-						<svg width="24" height="24" x-show="mobileMenuOpen" x-cloak class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-						</svg>
+
+						<!-- Контейнер для полосок -->
+						<span class="relative block w-6 h-5">
+							<!-- Верхняя полоска -->
+							<span
+								class="absolute left-0 h-[2px] w-6 bg-[#3E8E7E] rounded-md transition-all duration-300 ease-in-out origin-left"
+								:class="mobileMenuOpen ? '-top-[4px] left-[6px]  h-[3px] w-[21px] rotate-40' : 'top-0'">
+							</span>
+
+							<!-- Средняя полоска -->
+							<span
+								class="absolute left-0 top-[9px] h-[2px] w-6 bg-[#3E8E7E] rounded-md transition-all duration-300 ease-in-out"
+								:class="mobileMenuOpen ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'">
+							</span>
+
+							<!-- Нижняя полоска -->
+							<span
+								class="absolute left-0 h-[2px] w-6 bg-[#3E8E7E] rounded-md transition-all duration-300 ease-in-out origin-left"
+								:class="mobileMenuOpen ? 'top-[22px] left-[6px] h-[3px] w-[21px] -rotate-40' : 'top-[18px]'">
+							</span>
+						</span>
 					</button>
 				</div>
 
@@ -86,6 +102,7 @@
 
 
 	</header>
+
 
 	<!-- МОБИЛЬНОЕ МЕНЮ (обёртка с x-show) -->
 	<div
@@ -119,8 +136,7 @@
 			x-transition:leave-start="translate-x-0 opacity-100"
 			x-transition:leave-end="translate-x-full opacity-90"
 			class="absolute right-0 top-0 h-screen w-full max-w-sm bg-white shadow-2xl flex flex-col"
-			style="will-change: transform, opacity; -webkit-backface-visibility: hidden; -webkit-perspective: 1000;"
-		>
+			style="will-change: transform, opacity; -webkit-backface-visibility: hidden; -webkit-perspective: 1000;">
 
 			<!-- Шапка меню -->
 			<div class="flex justify-between p-2 border-b border-gray-100 bg-white shrink-0">
@@ -138,11 +154,28 @@
 					@click="closeMenu()"
 					class="p-2 rounded-full transition-colors"
 					aria-label="Закрыть меню">
-					<svg class="h-6 w-6" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-					</svg>
+					<!-- Контейнер для полосок -->
+					<span class="relative block w-6 h-5">
+						<!-- Верхняя полоска -->
+						<span
+							class="absolute left-0 h-[2px] w-6 bg-[#3E8E7E] rounded-md transition-all duration-300 ease-in-out origin-left"
+							:class="mobileMenuOpen ? '-top-[4px] left-[6px]  h-[3px] w-[21px] rotate-40' : 'top-0'">
+						</span>
+
+						<!-- Средняя полоска -->
+						<span
+							class="absolute left-0 top-[9px] h-[2px] w-6 bg-[#3E8E7E] rounded-md transition-all duration-300 ease-in-out"
+							:class="mobileMenuOpen ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'">
+						</span>
+
+						<!-- Нижняя полоска -->
+						<span
+							class="absolute left-0 h-[2px] w-6 bg-[#3E8E7E] rounded-md transition-all duration-300 ease-in-out origin-left"
+							:class="mobileMenuOpen ? 'top-[22px] left-[6px] h-[3px] w-[21px] -rotate-40' : 'top-[18px]'">
+						</span>
+					</span>
 				</button>
-            </div>
+			</div>
 
 			<!-- Пункты меню -->
 			<div class="flex-1 overflow-y-auto px-6 py-4">
@@ -154,23 +187,23 @@
 					'fallback_cb'     => false,
 				));
 				?>
-                <ul class="flex gap-4 justify-center mt-8">
-                    <li>
-                        <a href="/">
-                            <?php echo get_inline_svg('instagram.svg', 'w-[32px]'); ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/">
-                            <?php echo get_inline_svg('social.svg', 'w-[32px]'); ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/">
-                            <?php echo get_inline_svg('youtube.svg', 'w-[32px]'); ?>
-                        </a>
-                    </li>
-                </ul>
+				<ul class="flex gap-4 justify-center mt-8">
+					<li>
+						<a href="/">
+							<?php echo get_inline_svg('instagram.svg', 'w-[32px]'); ?>
+						</a>
+					</li>
+					<li>
+						<a href="/">
+							<?php echo get_inline_svg('social.svg', 'w-[32px]'); ?>
+						</a>
+					</li>
+					<li>
+						<a href="/">
+							<?php echo get_inline_svg('youtube.svg', 'w-[32px]'); ?>
+						</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

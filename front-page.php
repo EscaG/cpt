@@ -7,7 +7,7 @@
 				page-default
 			</div>
 			<div>
-				Home Page
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/intro.png" alt="intro" class="w-full h-auto">
 			</div>
 		</div>
 	</article>

@@ -1,7 +1,8 @@
 <?php
 
 // 1. Единая функция подключения скриптов и стилей
-function psc_enqueue_assets() {
+add_action('wp_enqueue_scripts', 'cpt_enqueue_assets');
+function cpt_enqueue_assets() {
     $theme_dir = get_template_directory();
     $theme_uri = get_template_directory_uri();
     $manifest_path = $theme_dir . '/dist/.vite/manifest.json';
@@ -15,7 +16,7 @@ function psc_enqueue_assets() {
         // JS
         if (isset($manifest[$js_entry])) {
             wp_enqueue_script(
-                'psc-script',
+                'cpt-script',
                 $theme_uri . '/dist/' . $manifest[$js_entry]['file'],
                 array(),
                 wp_get_theme()->get('Version'),
@@ -26,7 +27,7 @@ function psc_enqueue_assets() {
         // CSS (отдельный entry)
         if (isset($manifest[$css_entry])) {
             wp_enqueue_style(
-                'psc-style',
+                'cpt-style',
                 $theme_uri . '/dist/' . $manifest[$css_entry]['file'],
                 array(),
                 wp_get_theme()->get('Version')
@@ -36,24 +37,25 @@ function psc_enqueue_assets() {
         // --- РЕЖИМ РАЗРАБОТКИ ---
         $vite_dev_url = 'http://192.168.0.125:5173';
 
-        wp_enqueue_script('psc-script-dev', $vite_dev_url . '/' . $js_entry, array(), null, true);
+        wp_enqueue_script('cpt-script-dev', $vite_dev_url . '/' . $js_entry, array(), null, true);
 
         add_action('wp_head', function() use ($vite_dev_url, $css_entry) {
             echo '<link rel="stylesheet" href="' . $vite_dev_url . '/' . $css_entry . '">' . "\n";
         }, 1);
     }
 }
-add_action('wp_enqueue_scripts', 'psc_enqueue_assets');
+
 
 // 2. Добавляем type="module" для Vite (обязательно для ES modules)
-function psc_add_module_type_to_script($tag, $handle, $src) {
+add_filter('script_loader_tag', 'cpt_add_module_type_to_script', 10, 3);
+function cpt_add_module_type_to_script($tag, $handle, $src) {
     // Применяем ко всем нашим скриптам
-    if ($handle === 'psc-script-dev' || $handle === 'psc-script') {
+    if ($handle === 'cpt-script-dev' || $handle === 'cpt-script') {
         $tag = '<script type="module" src="' . esc_url($src) . '"></script>';
     }
     return $tag;
 }
-add_filter('script_loader_tag', 'psc_add_module_type_to_script', 10, 3);
+
 
 // 3. Регистрируем меню
 add_action( 'after_setup_theme', 'my_custom_theme_menus' );
@@ -63,6 +65,7 @@ function my_custom_theme_menus() {
     ) );
 }
 
+add_action( 'after_setup_theme', 'mytheme_setup' );
 function mytheme_setup() {
     // Добавляем поддержку кастомного логотипа
     add_theme_support( 'custom-logo', array(
@@ -71,10 +74,23 @@ function mytheme_setup() {
         'header-text' => array( 'site-title', 'site-description' ),
     ) );
 }
-add_action( 'after_setup_theme', 'mytheme_setup' );
+
+add_action('wp_head', 'my_theme_add_favicon');
+function my_theme_add_favicon() {
+    $theme_uri = get_template_directory_uri();
+
+    // Для современных браузеров и SVG
+    echo '<link rel="icon" href="' . $theme_uri . '/assets/images/favicon.svg" type="image/svg+xml">' . "\n";
+    // Фоллбэк для старых браузеров
+    echo '<link rel="alternate icon" href="' . $theme_uri . '/assets/images/favicon.ico" type="image/x-icon">' . "\n";
+    // Для Apple устройств (iPhone/iPad)
+    echo '<link rel="apple-touch-icon" href="' . $theme_uri . '/assets/images/apple-touch-icon.png">' . "\n";
+    // Для Android / PWA
+    echo '<link rel="manifest" href="' . $theme_uri . '/assets/images/site.webmanifest">' . "\n";
+}
 
 // Очистка лишних атрибутов у лого
-function psc_get_clean_logo() {
+function cpt_get_clean_logo() {
     $custom_logo_id = get_theme_mod( 'custom_logo' );
 
     // Если лого не задано, выводим название сайта текстом
@@ -113,7 +129,7 @@ if (!function_exists('get_inline_svg')) {
         $path_dist = $theme_dir . '/dist/assets/img/icons/' . $filename;
 
         // 2. Если нет, ищем в public (для локальной разработки в LocalWP)
-        $path_public = $theme_dir . '/public/assets/img/icons/' . $filename;
+        $path_public = $theme_dir . '/assets/img/icons/' . $filename;
 
         $path = file_exists($path_dist) ? $path_dist : $path_public;
 

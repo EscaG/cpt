@@ -19,7 +19,7 @@
 				<div style="max-width: 200px; min-width: 50px;">
 					<?php
 					if (has_custom_logo()) {
-						echo psc_get_clean_logo();
+						echo cpt_get_clean_logo();
 					} else {
 						echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
 					}
@@ -142,7 +142,7 @@
 				<div style="max-width: 170px; min-width: 50px;">
 					<?php
 					if (has_custom_logo()) {
-						echo psc_get_clean_logo();
+						echo cpt_get_clean_logo();
 					} else {
 						echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
 					}

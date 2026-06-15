@@ -4,6 +4,7 @@ import liveReload from "vite-plugin-live-reload";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+		base: './',
 		plugins: [
 			liveReload(['**/*.php', 'templates/**/*.php', 'inc/**/*.php']),
 			tailwindcss(),
@@ -34,7 +35,7 @@ export default defineConfig({
 							return 'assets/css/[name].[hash].[ext]';
 						}
 						if (assetInfo.name.endsWith('.woff2')) {
-							return 'assets/fonts/[name].[hash].[ext]';
+							return 'assets/fonts/[name].[ext]';
 						}
 						// Шрифты в fonts, картинки в img и т.д.
 						return 'assets/[ext]/[name].[hash].[ext]';

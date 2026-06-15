@@ -1,0 +1,16 @@
+.link-button {
+	@apply font-heading fl-text-[16px/24px] fl-py-[12px/20px] fl-px-[20px/30px] rounded-[25px] inline-block;
+	@apply transition-colors duration-300;
+
+	&.green-btn {
+		@apply bg-[#3E8E7E] hover:bg-[#2C655A] text-white;
+	}
+
+	&.white-btn {
+		@apply text-[#4A4A4A] hover:bg-[#ECF3F2] border border-[#3E8E7E];
+	}
+}
+
+.icon-in-button {
+	margin-bottom: 3px;
+}

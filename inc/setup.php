@@ -75,19 +75,19 @@ function mytheme_setup() {
     ) );
 }
 
-add_action('wp_head', 'my_theme_add_favicon');
-function my_theme_add_favicon() {
-    $theme_uri = get_template_directory_uri();
-
-    // Для современных браузеров и SVG
-    echo '<link rel="icon" href="' . $theme_uri . '/assets/images/favicon.svg" type="image/svg+xml">' . "\n";
-    // Фоллбэк для старых браузеров
-    echo '<link rel="alternate icon" href="' . $theme_uri . '/assets/images/favicon.ico" type="image/x-icon">' . "\n";
-    // Для Apple устройств (iPhone/iPad)
-    echo '<link rel="apple-touch-icon" href="' . $theme_uri . '/assets/images/apple-touch-icon.png">' . "\n";
-    // Для Android / PWA
-    echo '<link rel="manifest" href="' . $theme_uri . '/assets/images/site.webmanifest">' . "\n";
-}
+// add_action('wp_head', 'my_theme_add_favicon');
+// function my_theme_add_favicon() {
+//     $theme_uri = get_template_directory_uri();
+//
+//     // Для современных браузеров и SVG
+//     echo '<link rel="icon" href="' . $theme_uri . '/assets/images/favicon.svg" type="image/svg+xml">' . "\n";
+//     // Фоллбэк для старых браузеров
+//     echo '<link rel="alternate icon" href="' . $theme_uri . '/assets/images/favicon.ico" type="image/x-icon">' . "\n";
+//     // Для Apple устройств (iPhone/iPad)
+//     echo '<link rel="apple-touch-icon" href="' . $theme_uri . '/assets/images/apple-touch-icon.png">' . "\n";
+//     // Для Android / PWA
+//     echo '<link rel="manifest" href="' . $theme_uri . '/assets/images/site.webmanifest">' . "\n";
+// }
 
 // Очистка лишних атрибутов у лого
 function cpt_get_clean_logo() {

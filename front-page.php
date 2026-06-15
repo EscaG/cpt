@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 
 <main class="font-body">
+
+	<!-- Вступ -->
 	<section id="home_introduction" class="fl-pt-[50px/100px]">
 		<div class="container">
 			<div class="flex flex-col md:flex-row 2xl:fl-gap-[10px/240px] md:fl-gap-[10px/100px]">
@@ -29,16 +31,18 @@
 			</div>
 		</div>
 	</section>
+
+	<!-- Про нас -->
 	<section id="home_about">
 		<div class="container">
-			<h2 class="hidden md:block font-heading fl-text-[20px/36px] font-medium fl-mb-[20px/30px] text-center">Про нас</h2>
+			<h2 class="hidden md:block secondary-heading font-medium ">Про нас</h2>
 			<div class="flex fl-gap-[4/20] flex-col-reverse md:flex-row">
 				<div class="flex-1 fl-text-[16px/24px] ">
 					<p class="fl-mb-[20px/30px]"><span class="font-medium">Центр Психологічних Технологій</span> – це простір, де психологія перестає бути абстрактною і стає зрозумілою, структурованою та прикладною.
 						Ми навчаємо бачити психологічні процеси, працювати з ними системно та застосовувати психологічні інструменти у практиці й бізнесі.</p>
 					<p>Наша робота ґрунтується на поєднанні глибини психологічних підходів і чітких технологій їх використання.</p>
 				</div>
-				<h2 class="md:hidden font-heading fl-text-[20px/36px] font-medium text-center">Про нас</h2>
+				<h2 class="md:hidden secondary-heading font-medium">Про нас</h2>
 				<div class="flex flex-1 gap-2">
 					<div class="flex-1">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/about_1.png" alt="intro" class="w-full h-auto">
@@ -53,9 +57,11 @@
 			</div>
 		</div>
 	</section>
+
+	<!-- Наші цінності -->
 	<section id="home_values" class="bg-[#F1FAF7] text-center fl-py-[20px/50px]">
 		<div class="container">
-			<h2 class="font-heading fl-text-[20px/36px]">Наші цінності</h2>
+			<h2 class="secondary-heading">Наші цінності</h2>
 			<ul class="flex flex-col md:flex-row md:fl-gap-[10px/80px] xl:fl-gap-[50px/130px]">
 				<li class="flex-1 fl-pt-[30px/70px]">
 					<div class="m-auto fl-mb-[16px/30px] w-max" style="max-width: 90px;">
@@ -81,9 +87,95 @@
 					<p class="fl-text-[16px/18px] fl-mb-[16px/20px]">Підтримуємо не швидкі рішення, а стійке зростання.</p>
 					<p class="fl-text-[16px/18px] fl-mb-[16px/20px]">Розвиток як процес, що ґрунтується на усвідомленні, дисципліні та готовності змінюватися</p>
 				</li>
-
-
 			</ul>
+		</div>
+	</section>
+
+	<!-- Переваги навчання в Центрі -->
+	<section id="home_adv">
+		<div class="container">
+			<h2 class="secondary-heading font-medium fl-mb-[20px/30px]">Переваги навчання в Центрі</h2>
+
+			<?php
+			// 1. Настраиваем параметры запроса
+			$args = array(
+				'post_type'      => 'advantage', // Ваш тип записи
+				'posts_per_page' => -1,            // Количество записей (-1 для всех)
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+			);
+
+			// 2. Создаем новый объект запроса
+			$specialists_query = new WP_Query($args);
+
+			// 3. Проверяем, есть ли записи
+			if ($specialists_query->have_posts()) :
+			?>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 fl-gap-[3/6]">
+					<?php
+					// 4. Запускаем цикл
+					while ($specialists_query->have_posts()) : $specialists_query->the_post();
+					?>
+
+						<!-- Карточка специалиста -->
+						<div class="flex fl-gap-[3/6] bg-[#3E8E7E] rounded-xl overflow-hidden fl-px-[16px/20px] fl-py-[16px/30px]">
+
+							<!-- Картинка -->
+							<?php if (has_post_thumbnail()) : ?>
+								<div class="flex-1 max-w-[76px] min-w-[40px] w-content">
+									<?php
+									// 'medium_large' - встроенный размер WordPress. 
+									// Tailwind классы делают картинку адаптивной и добавляют эффект при наведении.
+									the_post_thumbnail('medium_large', array(
+										'class' => 'w-full h-auto rounded-sm'
+									));
+									?>
+								</div>
+							<?php endif; ?>
+
+							<!-- Текст -->
+							<div class="flex-4">
+								<h3 class="text-xl text-white font-semibold fl-mb-[16px/24px]">
+									<?php the_title(); ?>
+								</h3>
+
+								<!-- Краткое описание (если заполнено поле "Цитата" в админке) -->
+								<p class="text-white">
+									<?php echo get_the_excerpt() ?>
+								</p>
+
+							</div>
+						</div>
+
+					<?php
+					// Конец цикла
+					endwhile;
+					?>
+				</div>
+				<!-- Пагинация (если записей много) -->
+				<div class="mt-12 flex justify-center">
+					<?php
+					echo paginate_links(array(
+						'total' => $specialists_query->max_num_pages,
+						'prev_text' => '« Назад',
+						'next_text' => 'Вперед »',
+						'class' => 'px-4 py-2 border rounded-md hover:bg-gray-100 transition'
+					));
+					?>
+				</div>
+
+			<?php
+			else :
+			?>
+				<p class="text-center text-gray-500 text-lg">Специалисты пока не добавлены.</p>
+			<?php
+			endif;
+
+			// 5. ОБЯЗАТЕЛЬНО сбрасываем данные поста, чтобы не сломать другие циклы на странице
+			wp_reset_postdata();
+			?>
+
 		</div>
 	</section>
 </main>

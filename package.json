@@ -20,6 +20,7 @@
     "vite-plugin-live-reload": "^3.1.0"
   },
   "dependencies": {
+    "@alpinejs/collapse": "^3.15.12",
     "@tailwindcss/postcss": "^4.3.0",
     "alpinejs": "^3.15.12",
     "fluid-tailwindcss": "^1.1.5"

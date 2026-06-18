@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="font-body">
+<main>
 	<!-- Вступ -->
 	<?php get_template_part('parts/home/introduction'); ?>
 	<!-- Про нас -->

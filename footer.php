@@ -1,4 +1,4 @@
-    <footer class="bg-[#F1FAF7] mt-8 font-body">
+    <footer class="bg-[#F1FAF7] mt-8">
     	<div class="container">
     		<div class="flex flex-col md:flex-row py-7.5">
     			<!-- ЛОГО -->
@@ -33,7 +33,7 @@
     				<div class="flex-1">
     					<div class="mb-5">
     						<a class="fl-text-[16px/20px] py-1 inline-block" href="tel:+380996633214">+380996633214</a>
-    						<a class="fl-text-[16px/20px] py-1 inline-block break-words" href="mailto:center.psychology.teh@gmail.com" >center.psychology.teh@gmail.com</a>
+    						<a class="fl-text-[16px/20px] py-1 inline-block break-words" href="mailto:center.psychology.teh@gmail.com">center.psychology.teh@gmail.com</a>
     					</div>
     					<ul class="flex gap-6">
     						<li style="max-width: 50px;">

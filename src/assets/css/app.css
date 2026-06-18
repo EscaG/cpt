@@ -5,11 +5,13 @@
 @import "../css/fonts/RobotoSerif.css";
 @import "../css/fonts/Inter.css";
 
+@import "partials/_product-card.css";
 @import "partials/_container.css";
 @import "partials/_menu.css";
 @import "partials/_buttons.css";
 
 @plugin "fluid-tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
 	/* --- ГЛОБАЛЬНЫЕ РОЛИ --- */
@@ -22,6 +24,10 @@
 	--font-ui: "Inter", ui-sans-serif, system-ui, sans-serif;
 	/* 4. Специфичный элемент: Заголовок карточки товара */
 	--font-product: "IBMPlexSans", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+	@apply font-body;
 }
 
 .wide-element {
@@ -41,6 +47,11 @@ section {
 
 .secondary-heading {
 	@apply font-heading fl-text-[20px/36px] text-center;
+}
+
+.products {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
 }
 
 

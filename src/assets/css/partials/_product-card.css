@@ -1,0 +1,31 @@
+.product-wrapper {
+	@apply grid grid-cols-1 md:grid-cols-2 fl-gap-[4/6] fl-mb-[30px/70px]
+}
+
+.product-card {
+	@apply flex flex-col h-full bg-[#D6E8F5] rounded-xl hover:shadow overflow-hidden py-[30px] fl-px-[16px/30px];
+
+	&.blue-card {
+		@apply bg-[#D6E8F5];
+	}
+
+	&.green-card {
+		@apply bg-[#DDEEE8];
+	}
+
+	& .card-title {
+		@apply font-product fl-text-[16px/32px] font-semibold fl-mb-[20px/30px];
+	}
+
+	p {
+		@apply mb-[10px]
+	}
+
+	& .btn-wrapper {
+		@apply flex fl-gap-[10px/30px] lg:fl-gap-[20px/50px];
+	}
+}
+
+.category-wrapper {
+	@apply fl-mb-[20px/50px]
+}

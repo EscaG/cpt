@@ -1,0 +1,15 @@
+.product-description {
+	@apply fl-text-[16px/20px];
+
+	p {
+		@apply mb-[20px];
+	}
+
+	p:not(:first-child) {
+		@apply font-semibold;
+	}
+
+	ul {
+		@apply mb-[20px] ml-[20px] list-disc leading-tight;
+	}
+}

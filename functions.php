@@ -18,5 +18,6 @@ function mytheme_require_file($file)
 mytheme_require_file('setup');
 mytheme_require_file('images');
 mytheme_require_file('request');
+mytheme_require_file('product-variation');
 mytheme_require_file('calendar-admin');
 mytheme_require_file('alpine-helpers');

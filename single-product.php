@@ -23,71 +23,128 @@ if (! $product) {
 // 3. Извлекаем "сырые" данные для полного контроля
 $title             = $product->get_name();
 $full_description  = $product->get_description();          // Большое поле редактора
-$short_description = $product->get_short_description();    // Поле "Краткое описание"
 $price_html        = $product->get_price_html();           // Цена (если нужна)
+$min_price = 0;
+$max_price = 0;
+
+// if ($product->is_type('variable')) {
+// 	// Получаем минимальную цену
+// 	$min_price = $product->get_variation_price('min');
+
+// 	// Получаем максимальную цену
+// 	$max_price = $product->get_variation_price('max');
+
+// 	// Выводим их красиво с валютой
+// 	echo 'Минимальная цена: ' . wc_price($min_price);
+// 	echo 'Максимальная цена: ' . wc_price($max_price);
+// }
+// Получаем ID главной картинки товара
+$image_id = $product->get_image_id();
+
+// Получаем URL картинки (доступны размеры: 'full', 'thumbnail', 'medium', 'large')
+$image_url = wp_get_attachment_image_url($image_id, 'full');
 
 // Пример получения произвольного поля (например, "Длительность консультации")
 // Если вы используете ACF, лучше использовать get_field('duration'), но это универсальный способ WP:
-$duration          = get_post_meta($post_id, 'consultation_duration', true);
-$format            = get_post_meta($post_id, 'consultation_format', true);
+$duration          = get_post_meta($post_id, 'course_duration', true);
+$format            = get_post_meta($post_id, 'course_format', true);
+
+$schedule_group    = get_field('course_schedule', $post_id);
+
+$schedule_lecture  = $schedule_group['schedule_lecture'];
+$schedule_practice = $schedule_group['schedule_practice'];
+$schedule_duration = $schedule_group['schedule_duration'];
 ?>
 
 <main class="custom-single-service-page">
 	<div class="container">
 
-		<a href="<?php echo home_url('/'); ?>" class="back-link">← Назад к списку услуг</a>
+		<a href="<?php echo home_url('/'); ?>" class="back-link">← Назад</a>
 
-		<article class="service-details-wrapper">
+		<article>
+			<h1 class="fl-text-[20px/36px] font-heading mb-[30px]"><?php echo esc_html($title); ?></h1>
+			<div class="flex flex-col-reverse xl:flex-row gap-20">
+				<!-- ЛЕВАЯ КОЛОНКА: Основная информация -->
+				<div class="">
 
-			<!-- ЛЕВАЯ КОЛОНКА: Основная информация -->
-			<div class="service-main-info">
-				<h1 class="service-title"><?php echo esc_html($title); ?></h1>
-
-				<!-- Блок с мета-данными (длительность, формат) -->
-				<?php if ($duration || $format) : ?>
-					<div class="service-meta-tags">
-						<?php if ($duration) : ?>
-							<span class="meta-tag">⏱ <?php echo esc_html($duration); ?></span>
-						<?php endif; ?>
-						<?php if ($format) : ?>
-							<span class="meta-tag">💻 <?php echo esc_html($format); ?></span>
-						<?php endif; ?>
+					<div class="product-description">
+						<?php echo apply_filters('the_content', $full_description); ?>
 					</div>
-				<?php endif; ?>
 
-				<!-- ПОЛНОЕ ОПИСАНИЕ (То, что в большом редакторе) -->
-				<!-- apply_filters нужен, чтобы работали абзацы <p>, жирный текст и т.д. -->
-				<div class="prose prose-sm max-w-none">
-					<?php echo apply_filters('the_content', $full_description); ?>
+					<div class="fl-my-[30px/70px] border border-[#3E8E7E] rounded-full px-6 py-3">
+						<?php echo wp_kses_post($format) ?>
+					</div>
+					<?php if ($schedule_group) : ?>
+						<div class="schedule flex flex-wrap fl-gap-[2/12]">
+							<?php if ($schedule_lecture) : ?>
+								<div class="fl-p-[30px/50px] bg-[#DDEEE8] rounded-xl">
+									<p><?php echo esc_html($schedule_lecture); ?></p>
+								</div>
+							<?php endif; ?>
+							<?php if ($schedule_practice) : ?>
+								<div class="fl-p-[30px/50px] bg-[#DDEEE8] rounded-xl">
+									<p><?php echo esc_html($schedule_practice); ?></p>
+								</div>
+							<?php endif; ?>
+							<?php if ($schedule_duration) : ?>
+								<div class="fl-p-[30px/50px] bg-[#DDEEE8] rounded-xl">
+									<p><?php echo esc_html($schedule_duration); ?></p>
+								</div>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+
 				</div>
+
+				<!-- ПРАВАЯ КОЛОНКА (или нижняя): Картинка -->
+				<aside class="service-sidebar">
+					<?php if ($image_url) : ?>
+						<img src="<?php echo esc_url($image_url); ?>"
+							alt="<?php echo esc_attr($title); ?>"
+							class="!fl-h-[140px/300px] !w-full rounded-2xl object-cover xl:!h-auto xl:w-auto inline-block">
+					<?php endif; ?>
+				</aside>
 			</div>
 
-			<!-- ПРАВАЯ КОЛОНКА (или нижняя): Краткое описание и действие -->
-			<aside class="service-sidebar">
 
-				<!-- КРАТКОЕ ОПИСАНИЕ (То, что в маленьком поле внизу товара) -->
-				<?php if ($short_description) : ?>
-					<div class="service-short-description-box">
-						<h3>О консультации</h3>
-						<?php echo wpautop($short_description); ?>
-					</div>
-				<?php endif; ?>
 
-				<!-- Цена (если вы ее указываете в товаре) -->
-				<?php if ($price_html) : ?>
-					<div class="service-price">
-						<?php echo $price_html; ?>
-					</div>
-				<?php endif; ?>
-
-				<!-- МЕСТО ДЛЯ ВАШЕЙ БУДУЩЕЙ КНОПКИ -->
-				<div class="service-action-area">
-					<!-- Пока здесь заглушка. Позже вы вставите сюда свою кнопку или форму -->
-					<button class="custom-book-btn" disabled>Кнопка записи (скоро)</button>
+			<!-- Блок с мета-данными (длительность, формат) -->
+			<?php if ($duration || $format) : ?>
+				<div class="service-meta-tags">
+					<?php if ($duration) : ?>
+						<p class="meta-tag">⏱ <?php echo esc_html($duration); ?></p>
+					<?php endif; ?>
+					<?php if ($format) : ?>
+						<p class="meta-tag">💻 <?php echo esc_html($format); ?></p>
+					<?php endif; ?>
 				</div>
+			<?php endif; ?>
+			<!-- Цена (если вы ее указываете в товаре) -->
+			<?php if ($product->is_type('variable')) :
+				$min_price = $product->get_variation_price('min');
+				$max_price = $product->get_variation_price('max');
+			?>
 
-			</aside>
-
+				<div class="custom-product-price">
+					<?php if ($min_price !== $max_price) : ?>
+						<!-- Если цены разные, выводим блоки раздельно -->
+						<span class="price-from">От: <?php echo wc_price($min_price); ?></span>
+						<span class="price-to">До: <?php echo wc_price($max_price); ?></span>
+					<?php else : ?>
+						<!-- Если цена одна, выводим только её -->
+						<span class="price-single"><?php echo wc_price($min_price); ?></span>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
+			<a
+				class="card-button green-btn text-nowrap"
+				target="_blank"
+				href="https://docs.google.com/forms/d/e/1FAIpQLSc9sq6sIQX9US4pw8fqzvsvPfgg8csWgy43Ce5SZNTYfSM-kg/viewform">
+				Записатися
+				<span class="ml-[7px] fl-mb-[-3px/-4px]" style="max-width: 24px; display: inline-block;">
+					<?php echo get_inline_svg('calendar.svg', 'fl-w-[16px/24px] stroke-white'); ?>
+				</span>
+			</a>
 		</article>
 	</div>
 </main>

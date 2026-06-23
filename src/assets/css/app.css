@@ -5,6 +5,7 @@
 @import "../css/fonts/RobotoSerif.css";
 @import "../css/fonts/Inter.css";
 
+@import "./product-page.css";
 @import "partials/_product-card.css";
 @import "partials/_container.css";
 @import "partials/_menu.css";

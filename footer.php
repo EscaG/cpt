@@ -1,4 +1,4 @@
-    <footer class="bg-[#F1FAF7] mt-8 font-body">
+    <footer class="bg-[#F1FAF7] mt-8">
     	<div class="container">
     		<div class="flex flex-col md:flex-row py-7.5">
     			<!-- ЛОГО -->
@@ -8,7 +8,7 @@
     				<div class="mb-5" style="max-width: 200px; min-width: 50px;">
     					<?php
 							if (has_custom_logo()) {
-								echo psc_get_clean_logo();
+								echo cpt_get_clean_logo();
 							} else {
 								echo '<a href="' . esc_url(home_url('/')) . '">' . esc_html(get_bloginfo('name')) . '</a>';
 							}
@@ -33,7 +33,7 @@
     				<div class="flex-1">
     					<div class="mb-5">
     						<a class="fl-text-[16px/20px] py-1 inline-block" href="tel:+380996633214">+380996633214</a>
-    						<a class="fl-text-[16px/20px] py-1 inline-block break-words" href="mailto:center.psychology.teh@gmail.com" >center.psychology.teh@gmail.com</a>
+    						<a class="fl-text-[16px/20px] py-1 inline-block break-words" href="mailto:center.psychology.teh@gmail.com">center.psychology.teh@gmail.com</a>
     					</div>
     					<ul class="flex gap-6">
     						<li style="max-width: 50px;">

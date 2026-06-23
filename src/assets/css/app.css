@@ -5,22 +5,54 @@
 @import "../css/fonts/RobotoSerif.css";
 @import "../css/fonts/Inter.css";
 
-@import "../../partials/_container.css";
-@import "../../partials/_menu.css";
+@import "partials/_product-card.css";
+@import "partials/_container.css";
+@import "partials/_menu.css";
+@import "partials/_buttons.css";
 
 @plugin "fluid-tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
-    /* --- ГЛОБАЛЬНЫЕ РОЛИ --- */
-    /* 1. Заголовки (H1-H6) + иногда акцентные кнопки */
-    --font-heading: "RobotoSerif", ui-serif, Georgia, serif;
-    /* 2. Основной текст сайта (статьи, описания, футер) */
-    --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-    /* --- КОМПОНЕНТНЫЕ РОЛИ --- */
-    /* 3. Интерфейсные элементы: кнопки, теги, характеристики, текст внутри карточек */
-    --font-ui: "Inter", ui-sans-serif, system-ui, sans-serif;
-    /* 4. Специфичный элемент: Заголовок карточки товара */
-    --font-product: "IBMPlexSans", ui-sans-serif, system-ui, sans-serif;
+	/* --- ГЛОБАЛЬНЫЕ РОЛИ --- */
+	/* 1. Заголовки (H1-H6) + иногда акцентные кнопки */
+	--font-heading: "RobotoSerif", ui-serif, Georgia, serif;
+	/* 2. Основной текст сайта (статьи, описания, футер) */
+	--font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+	/* --- КОМПОНЕНТНЫЕ РОЛИ --- */
+	/* 3. Интерфейсные элементы: кнопки, теги, характеристики, текст внутри карточек */
+	--font-ui: "Inter", ui-sans-serif, system-ui, sans-serif;
+	/* 4. Специфичный элемент: Заголовок карточки товара */
+	--font-product: "IBMPlexSans", ui-sans-serif, system-ui, sans-serif;
 }
+
+body {
+	@apply font-body;
+}
+
+.wide-element {
+	/* Считает расстояние от края контейнера до края экрана */
+	margin-left: calc((100vw - 100%) / -2);
+	padding-left: calc((100vw - 100%) / 2);
+
+	/* Отменяем правый отступ, чтобы элемент тянулся только влево */
+	margin-right: 0;
+}
+
+section {
+	&:not(:last-child) {
+		margin-bottom: 60px;
+	}
+}
+
+.secondary-heading {
+	@apply font-heading fl-text-[20px/36px] text-center;
+}
+
+.products {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
 
 @source "../../../**/*.{js,php}";

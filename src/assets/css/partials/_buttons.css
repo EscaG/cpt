@@ -1,0 +1,41 @@
+.link-button {
+	@apply font-heading fl-text-[16px/24px] fl-py-[12px/20px] fl-px-[20px/30px] rounded-[25px] inline-block;
+	@apply transition-colors duration-300;
+
+	&.green-btn {
+		@apply bg-[#3E8E7E] hover:bg-[#2C655A] text-white;
+	}
+
+	&.white-btn {
+		@apply text-[#4A4A4A] hover:bg-[#ECF3F2] border border-[#3E8E7E];
+	}
+
+
+}
+
+.card-button {
+	@apply font-ui font-medium fl-text-[14px/22px] fl-py-[8px/10px] rounded-[25px] inline-block;
+	@apply fl-px-[20px/30px] md:fl-px-[10px/20px] lg:fl-px-[20px/30px];
+	@apply transition-colors transition-opacity duration-300;
+
+	&.inherit-green-btn {
+		@apply hover:bg-[#D6E8F5] border border-[#243E63];
+	}
+
+	&.inherit-blue-btn {
+		@apply hover:bg-[#DDEEE8] border border-[#243E63];
+	}
+
+	&.blue-btn {
+		@apply bg-[#243E63] hover:opacity-80 text-white;
+	}
+
+	&.green-btn {
+		@apply bg-[#3E8E7E] hover:opacity-80 text-white;
+	}
+
+}
+
+.icon-in-button {
+	margin-bottom: 3px;
+}

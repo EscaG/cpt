@@ -30,6 +30,9 @@
 		@apply bg-[#243E63] hover:opacity-80 text-white;
 	}
 
+	&.green-btn {
+		@apply bg-[#3E8E7E] hover:opacity-80 text-white;
+	}
 
 }
 

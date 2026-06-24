@@ -1,6 +1,6 @@
 <?php ?>
 
-<section id="home_introduction" class="fl-pt-[50px/100px]">
+<section id="home_introduction">
 	<div class="container">
 		<div class="flex flex-col md:flex-row 2xl:fl-gap-[10px/240px] md:fl-gap-[10px/100px]">
 			<div class="flex-3">

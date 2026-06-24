@@ -70,7 +70,7 @@ function course_program_render_box($post)
 		$modules = array(array('title' => '', 'description' => ''));
 	}
 
-	course_program_include_template('admin/course-program-box.php', array(
+	course_program_include_template('course-program-box.php', array(
 		'modules' => $modules,
 	));
 }
@@ -142,7 +142,7 @@ function course_program_get_modules($product_id)
  * ------------------------------------------------- */
 function course_program_include_template($template_name, $args = array())
 {
-	$path = get_template_directory() . '/templates/' . $template_name;
+	$path = get_template_directory() . '/template-parts/admin/woocommerce/' . $template_name;
 
 	if (! file_exists($path)) {
 		return;

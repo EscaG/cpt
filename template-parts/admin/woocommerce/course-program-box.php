@@ -11,7 +11,7 @@ if (! defined('ABSPATH')) exit;
 	<div class="course-program-list" id="course-program-list">
 		<?php foreach ($modules as $i => $module) : ?>
 			<?php
-			course_program_include_template('admin/course-program-row.php', array(
+			course_program_include_template('course-program-row.php', array(
 				'index'  => $i,
 				'module' => $module,
 			));
@@ -28,7 +28,7 @@ if (! defined('ABSPATH')) exit;
 	<!-- Скрытый шаблон для клонирования через JS -->
 	<script type="text/html" id="course-program-template">
 		<?php
-		course_program_include_template('admin/course-program-row.php', array(
+		course_program_include_template('course-program-row.php', array(
 			'index'  => '{{INDEX}}',
 			'module' => array('title' => '', 'description' => ''),
 		));

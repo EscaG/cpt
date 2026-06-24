@@ -8,4 +8,5 @@ defined('ABSPATH') || exit;
 // __DIR__ - это магическая константа PHP, она означает "текущая папка файла"
 require_once __DIR__ . '/admin-product-columns.php';
 require_once __DIR__ . '/product-variations.php';
-require_once __DIR__ . '/custom-product-fields.php';
+require_once __DIR__ . '/special-field.php';
+require_once __DIR__ . '/course-program.php';

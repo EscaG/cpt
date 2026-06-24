@@ -1,0 +1,94 @@
+.course-program-wrap {
+	max-width: 900px;
+}
+
+.course-program-row {
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	border-radius: 4px;
+	margin-bottom: 8px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* Компактная шапка */
+.course-program-row-head {
+	display: flex;
+	align-items: center;
+	padding: 0px 10px;
+	background: #f6f7f7;
+	border-bottom: 1px solid #ccd0d4;
+	min-height: 32px;
+}
+
+.course-program-drag {
+	color: #999;
+	font-size: 14px;
+	margin-right: 8px;
+	cursor: grab;
+	user-select: none;
+	line-height: 1;
+}
+
+.course-program-drag:active {
+	cursor: grabbing;
+}
+
+.course-program-title-preview {
+	flex: 1;
+	font-size: 13px;
+	line-height: 1.3;
+}
+
+/* Компактная кнопка удаления */
+.course-program-remove {
+	color: #b32d2e !important;
+	border-color: #b32d2e !important;
+	padding: 2px 8px !important;
+	font-size: 12px !important;
+	line-height: 1.4 !important;
+	min-height: auto !important;
+	height: auto !important;
+}
+
+.course-program-row-body {
+	padding: 10px;
+}
+
+.course-program-row-body label {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.course-program-row-body label:last-child {
+	margin-bottom: 0;
+}
+
+.course-program-row-body label span {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 3px;
+	font-size: 12px;
+}
+
+.course-program-row-body input,
+.course-program-row-body textarea {
+	width: 100%;
+	padding: 6px 8px;
+	font-size: 13px;
+}
+
+.course-program-row-body textarea {
+	min-height: 60px;
+}
+
+/* Состояние при перетаскивании */
+.course-program-row.ui-sortable-helper {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.course-program-row.ui-sortable-placeholder {
+	visibility: visible !important;
+	background: #f0f0f1;
+	border: 2px dashed #c3c4c7;
+	min-height: 32px;
+}

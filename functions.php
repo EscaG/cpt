@@ -18,6 +18,12 @@ function mytheme_require_file($file)
 mytheme_require_file('setup');
 mytheme_require_file('images');
 mytheme_require_file('request');
-mytheme_require_file('product-variation');
+
+// Подключаем кастомный функционал WooCommerce, только если плагин активен
+if (class_exists('WooCommerce')) {
+	require_once get_template_directory() . '/inc/woocommerce/loader.php';
+	// Если это плагин, используйте plugin_dir_path(__FILE__) вместо get_template_directory()
+}
+
 mytheme_require_file('calendar-admin');
 mytheme_require_file('alpine-helpers');

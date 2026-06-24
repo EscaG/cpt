@@ -42,7 +42,7 @@ $styles_map = [
 $default_style = ['card' => 'blue-card', 'btn' => 'inherit-blue-btn'];
 ?>
 
-<section id="home_training" class="font-ui">
+<section id="home_trainings" class="font-ui">
 	<div class="container">
 		<h2 class="fl-text-[20px/36px] text-center font-product font-medium fl-mb-[30px/50px]">
 			Навчальні програми
@@ -74,7 +74,7 @@ $default_style = ['card' => 'blue-card', 'btn' => 'inherit-blue-btn'];
 		?>
 
 			<h3 class="fl-text-[14px/24px] fl-mb-[30px/50px]">
-				Напрямки консультування &#8594;
+				Напрямки консультування &rarr;
 				<span class="font-medium"><?= esc_html($parent_cat->name) ?></span>
 			</h3>
 

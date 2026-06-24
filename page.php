@@ -1,12 +1,23 @@
-<?php get_header(); ?>
+<?php
+get_header();
 
-<main class="container mx-auto px-4 py-8">
-    <?php
+$page_slug = $post->post_name ?: 'default';
 
-    $page_slug = basename(get_permalink());
+$folder_index = locate_template("template-parts/pages/{$page_slug}/index.php");
+$file_template = locate_template("template-parts/pages/{$page_slug}.php");
+?>
 
-    get_template_part('template-parts/page', $page_slug);
-    ?>
+<main class="site-main pt-8 md:pt-12 pb-20">
+	<?php
+	if ($folder_index) {
+		get_template_part("template-parts/pages/{$page_slug}/index");
+	} elseif ($file_template) {
+		get_template_part("template-parts/pages/{$page_slug}");
+	} else {
+		get_template_part('template-parts/pages/default');
+	}
+	?>
 </main>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

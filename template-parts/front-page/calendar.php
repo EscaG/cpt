@@ -1,6 +1,6 @@
 <?php ?>
 
-<section class="home_calendar">
+<section id="home_calendar">
 	<div class="container">
 		<h2 class="secondary-heading font-medium fl-mb-[30px/50px]">Календар подій</h2>
 

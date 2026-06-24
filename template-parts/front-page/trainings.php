@@ -42,7 +42,7 @@ $styles_map = [
 $default_style = ['card' => 'blue-card', 'btn' => 'inherit-blue-btn'];
 ?>
 
-<section id="home_training" class="font-ui">
+<section id="home_trainings" class="font-ui">
 	<div class="container">
 		<h2 class="fl-text-[20px/36px] text-center font-product font-medium fl-mb-[30px/50px]">
 			Навчальні програми

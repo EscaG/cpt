@@ -1,4 +1,4 @@
-    <footer class="bg-[#F1FAF7] mt-20">
+    <footer class="bg-[#F1FAF7]">
     	<div class="container">
     		<div class="flex flex-col md:flex-row py-7.5">
     			<!-- ЛОГО -->

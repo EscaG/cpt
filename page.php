@@ -7,7 +7,7 @@ $folder_index = locate_template("template-parts/pages/{$page_slug}/index.php");
 $file_template = locate_template("template-parts/pages/{$page_slug}.php");
 ?>
 
-<main class="main-content">
+<main class="site-main pt-8 md:pt-12 pb-20">
 	<?php
 	if ($folder_index) {
 		get_template_part("template-parts/pages/{$page_slug}/index");

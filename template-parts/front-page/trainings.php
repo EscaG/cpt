@@ -74,7 +74,7 @@ $default_style = ['card' => 'blue-card', 'btn' => 'inherit-blue-btn'];
 		?>
 
 			<h3 class="fl-text-[14px/24px] fl-mb-[30px/50px]">
-				Напрямки консультування &#8594;
+				Напрямки консультування &rarr;
 				<span class="font-medium"><?= esc_html($parent_cat->name) ?></span>
 			</h3>
 

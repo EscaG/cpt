@@ -27,3 +27,4 @@ if (class_exists('WooCommerce')) {
 
 mytheme_require_file('calendar-admin');
 mytheme_require_file('alpine-helpers');
+mytheme_require_file('menu');

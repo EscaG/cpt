@@ -1,6 +1,6 @@
 <?php ?>
 
-<section id="home_about">
+<section class="home_about">
 	<div class="container">
 		<h2 class="hidden md:block secondary-heading font-medium fl-mb-[20px/70px]">Про нас</h2>
 		<div class="flex fl-gap-[4/20] flex-col-reverse md:flex-row">

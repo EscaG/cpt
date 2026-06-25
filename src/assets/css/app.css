@@ -55,5 +55,12 @@ section {
 	grid-template-columns: repeat(4, 1fr);
 }
 
+@layer base {
+	html {
+		/* Резервирует место под скроллбар — страница не будет прыгать влево-вправо */
+		scrollbar-gutter: stable;
+	}
+}
+
 
 @source "../../../**/*.{js,php}";

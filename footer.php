@@ -23,7 +23,7 @@
 							wp_nav_menu(array(
 								'theme_location'  => 'header-menu',
 								'container'       => 'nav',
-								'container_class' => 'footer-menu',
+								'container_class' => 'footer-menu animated-nav',
 								'menu_class'      => 'flex flex-col',
 								'fallback_cb'     => false,
 								'depth'           => 0,

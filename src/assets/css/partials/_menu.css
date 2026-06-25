@@ -12,7 +12,7 @@
 	}
 
 	/* Подчеркивание для активного пункта меню (текущая страница) */
-	& .current-menu-item a {
+	& .current-menu-item a.active-link {
 		@apply bg-[length:100%_2px];
 	}
 }
@@ -27,16 +27,6 @@
 	& .menu-item a {
 		@apply fl-text-[15px/20px] block p-1 mb-1;
 	}
-}
-
-.custom-logo-link img,
-.custom-logo {
-	width: auto;
-	/* Сбрасываем инлайн-ширину */
-	min-width: 100px;
-	/* Задайте здесь нужную вам максимальную ширину */
-	display: block;
-	object-fit: contain;
 }
 
 [x-cloak] {

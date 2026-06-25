@@ -1,5 +1,5 @@
 <?php ?>
-<section id="home_advantages">
+<section class="home_advantages">
 	<div class="container">
 		<h2 class="secondary-heading font-medium fl-mb-[30px/70px]">Переваги навчання в Центрі</h2>
 

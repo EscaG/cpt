@@ -2,7 +2,10 @@
 
 <section id="home_calendar">
 	<div class="container">
-		<h2 class="secondary-heading font-medium fl-mb-[30px/50px]">Календар подій</h2>
+		<?php get_template_part('template-parts/ui/section-title', null, [
+			'label' => 'Календар подій',
+			'classes' => 'fl-mb-[30px/50px]',
+		]); ?>
 
 		<?php
 		$today = date('Ymd');

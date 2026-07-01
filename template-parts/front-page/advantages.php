@@ -1,8 +1,11 @@
 <?php ?>
 <section class="home_advantages">
 	<div class="container">
-		<h2 class="secondary-heading font-medium fl-mb-[30px/70px]">Переваги навчання в Центрі</h2>
 
+		<?php get_template_part('template-parts/ui/section-title', null, [
+			'label' => 'Переваги навчання в Центрі',
+			'classes' => 'fl-mb-[30px/70px]',
+		]); ?>
 		<?php
 		// 1. Настраиваем параметры запроса
 		$args = array(

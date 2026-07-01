@@ -2,7 +2,10 @@
 
 <section id="home_values" class="bg-[#F1FAF7] text-center fl-py-[20px/50px]">
 	<div class="container">
-		<h2 class="secondary-heading">Наші цінності</h2>
+		<?php get_template_part('template-parts/ui/section-title', null, [
+			'label' => 'Наші цінності',
+			'weight' => 'font-regular',
+		]); ?>
 		<ul class="flex flex-col md:flex-row md:fl-gap-[10px/80px] xl:fl-gap-[50px/130px]">
 			<li class="flex-1 fl-pt-[30px/70px]">
 				<div class="m-auto fl-mb-[16px/30px] w-max" style="max-width: 90px;">

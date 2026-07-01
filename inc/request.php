@@ -1,5 +1,6 @@
 <?php
 
+// Регистрация типа записи "Переваги навчання в Центрі"
 function advantages_of_studying()
 {
 	$labels = array(

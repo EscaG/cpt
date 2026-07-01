@@ -11,7 +11,10 @@ $reviews_query = new WP_Query([
 $total_reviews = $reviews_query->post_count;
 ?>
 <section id="home-reviews">
-	<h2 class="fl-text-[20px/36px] font-product font-medium text-center">Відгуки</h2>
+	<?php get_template_part('template-parts/ui/section-title', null, [
+		'label' => 'Відгуки',
+		'font' => 'font-product',
+	]); ?>
 	<div x-data="reviewsCarousel(<?= $total_reviews ?>)"
 		x-init="init()"
 		class="relative w-full max-w-7xl mx-auto py-8 select-none">
